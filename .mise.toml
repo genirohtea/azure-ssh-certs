@@ -1,0 +1,15 @@
+[env]
+# Arbitrary Environment Variables
+GENIROHTEA_PROJECT_NAME = 'azure-ssh-certs'
+
+[tools]
+# Specify tooling versions
+python = '3.12.2'
+terraform = '1.9.0'
+
+[plugins]
+# specify a custom repo url
+# note this will only be used if the plugin does not already exist
+
+
+[settings]
