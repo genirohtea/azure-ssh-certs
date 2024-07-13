@@ -1,0 +1,5 @@
+---
+# Standardized from the terraform module
+service_name: "sshcerts"
+ca_key_type: "priopenssh"
+ca_type: "userca"

@@ -1,0 +1,5 @@
+---
+# The site that will be connected to
+# site: <site_name>
+# The environment in the site that will be connected to
+# env: prod

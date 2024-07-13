@@ -1,0 +1,11 @@
+---
+# The site that will be connected to
+# site: <site_name>
+# The environment in the site that will be connected to
+# env: prod
+
+# Use the CA if the hostname matches this regex
+# domain: "*<site_name>.<user>.com"
+
+# Used in the convention naming of the User SSH private key
+# user: "<user>"

@@ -1,0 +1,17 @@
+---
+driver:
+  name: docker
+platforms:
+  - name: instance
+    pre_build_image: true
+    image: python:3.12.2-bookworm
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_VERBOSITY: 1
+  extra_vars:
+    site: test_site
+    env: prod
+    identity: hostname
+    principals: hostname.example.com
+    expiry: "+395d"

@@ -1,0 +1,6 @@
+---
+# Installed using ansible-galaxy collection -r requirements.txt
+collections:
+  - name: azure.azcollection
+  - name: community.crypto
+# You may have to manually install the azure dependecies like: python3 -m pip install -r ~/.ansible/collections/ansible_collections/azure/azcollection/requirements.txt
