@@ -63,7 +63,7 @@
         cmd: >-
           set -o pipefail;
           ssh-keygen -s {{ ssh_ca_priv_key_file.path }} -I {{ identity }} -h -n {{ principals }} -V {{ expiry }} {{ host_key_path }}.pub
-        creates: "{{ host_key_path }}.pub"
+        creates: "{{ host_key_path }}-cert.pub"
       args:
         executable: /bin/bash
 
