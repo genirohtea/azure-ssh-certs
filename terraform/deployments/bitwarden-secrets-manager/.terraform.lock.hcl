@@ -1,0 +1,76 @@
+# This file is maintained automatically by "tofu init".
+# Manual edits may be lost in future updates.
+
+provider "registry.opentofu.org/hashicorp/null" {
+  version = "3.2.2"
+  hashes = [
+    "h1:sU0t6ANQ4IfEwZbbBmcNeOCg2CDCViVb7L7QVfIHrCs=",
+    "zh:00e5877d19fb1c1d8c4b3536334a46a5c86f57146fd115c7b7b4b5d2bf2de86d",
+    "zh:1755c2999e73e4d73f9de670c145c9a0dc5a373802799dff06a0e9c161354163",
+    "zh:2b29d706353bc9c4edda6a2946af3322abe94372ffb421d81fa176f1e57e33be",
+    "zh:34f65259c6d2bd51582b6da536e782b181b23725782b181193b965f519fbbacd",
+    "zh:370f6eb744475926a1fa7464d82d46ad83c2e1148b4b21681b4cec4d75b97969",
+    "zh:5950bdb23b4fcc6431562d7eba3dea37844aa4220c4da2eb898ae3e4d1b64ec4",
+    "zh:8f3d5c8d4b9d497fec36953a227f80c76d37fc8431b683a23fb1c42b9cccbf8a",
+    "zh:8f6eb5e65c047bf490ad3891efecefc488503b65898d4ee106f474697ba257d7",
+    "zh:a7040eed688316fe00379574c72bb8c47dbe2638b038bb705647cbf224de8f72",
+    "zh:e561f28df04d9e51b75f33004b7767a53c45ad96e3375d86181ba1363bffbc77",
+  ]
+}
+
+provider "registry.opentofu.org/hashicorp/time" {
+  version = "0.12.0"
+  hashes = [
+    "h1:d4t3arm3n6vA6/vSLs7HzaMdxlKnPn3k9578BduysbY=",
+    "zh:01b7ac8203eb7ed712a356215e44f8851b96ddcfdf63b13ff9f870f799667059",
+    "zh:06c4420bdb964209eb119f1740575df7b8ac44a3b5d71631dae2962a155f58b7",
+    "zh:2534d1d04ca934e25426ab5bb0b29a57a95c676f70b154bfb382d58bf1e6f6c9",
+    "zh:340de6c71a1090f13ab5c429ca2134c12189e8b86c2b104859e82eb30eea9772",
+    "zh:561a2780f7fb1b0a9092c59c4eb3e3d8c3ec9cecddc9214ae92fdc941c3bd2e7",
+    "zh:65b1a982617375123bc3a1dcd44d61264cabac6b3d83378e7079ee0655ec6679",
+    "zh:9ae9f6c9609c5ed9e35a702068629ef5adfb131f957a571fc39ce0127c782ca4",
+    "zh:ad7f066c5db340683cb5a3a29ced3a2ece13c5b84c46d6b3d30815444a6c78ee",
+    "zh:f532d2c33c2303a970e9ee813e37d208eb65321aec489da14786b7f04ea66105",
+    "zh:fb269e2425a4b996fef79665eaeec8f40a388bf7ac7bf8ce2c108fb83c4b10ca",
+  ]
+}
+
+provider "registry.opentofu.org/hashicorp/tls" {
+  version = "4.0.5"
+  hashes = [
+    "h1:LWGTWAUrC+/iTsNq0vxANvGOp+7Jnl4wAnSOW2Shqjc=",
+    "zh:05a7dc3ac92005485714f87541ad6d0d478988b478c5774227a7d39b01660050",
+    "zh:547e0def44080456169bf77c21037aa6dc9e7f3e644a8f6a2c5fc3e6c15cf560",
+    "zh:6842b03d050ae1a4f1aaed2a2b1ca707eae84ae45ae492e4bb57c3d48c26e1f1",
+    "zh:6ced0a9eaaba12377f3a9b08df2fd9b83ae3cb357f859eb6aecf24852f718d9a",
+    "zh:766bcdf71a7501da73d4805d05764dcb7c848619fa7c04b3b9bd514e5ce9e4aa",
+    "zh:84cc8617ce0b9a3071472863f43152812e5e8544802653f636c866ef96f1ed34",
+    "zh:b1939e0d44c89315173b78228c1cf8660a6924604e75ced7b89e45196ce4f45e",
+    "zh:ced317916e13326766427790b1d8946c4151c4f3b0efd8f720a3bc24abe065fa",
+    "zh:ec9ff3412cf84ba81ca88328b62c17842b803ef406ae19152c13860b356b259c",
+    "zh:ff064f0071e98702e542e1ce00c0465b7cd186782fe9ccab8b8830cac0f10dd4",
+  ]
+}
+
+provider "registry.terraform.io/sebastiaan-dev/bitwarden-secrets" {
+  version     = "0.1.2"
+  constraints = ">= 0.1.2"
+  hashes = [
+    "h1:NDAcduoe6xA+VZ8XYD8Apvzg8cYx/aHPO8p7HXizQqg=",
+    "zh:0e9ec30a18ac9364e0b8283e652db25477d516eed7fb6772ed8b1bb0c8d02226",
+    "zh:0f6cf176fdbac152776b9f3c8eac83c2584e86383a16d31ced514d40f7603db0",
+    "zh:316d65414213443aa2c9f7fcef65b893b8c169e767f5f1270a20df907227eb45",
+    "zh:517e8e104a5142e8879711c7019c175797a2a6e7d032e29c9edaf83c7e29496a",
+    "zh:5747352c33e7faea1b0f64ad6d5d81eda03d046d2a7655db66ecd4770385ee7e",
+    "zh:8253fb88e2f73083cd39d413d4d27914ff14b8bfb814134290d8fb987c6b8cd4",
+    "zh:8647cfc74705ffdd96d327536cb5a79868732355f8adc1eb75d0a9beca8604c9",
+    "zh:868fba3870247c611e2eb12907f5007ba400ff03fdfb04d29a17e7b5e5c7f1e2",
+    "zh:890df766e9b839623b1f0437355032a3c006226a6c200cd911e15ee1a9014e9f",
+    "zh:97c881652ec8ce3c0fb9a902bfeff798403487da3e247292f408893d1ab5f9a4",
+    "zh:9d3b8d6dc7111ed00be691e871e4d2fcf974bbf6226a4068e57b74db25f2ecf1",
+    "zh:b289543e00305e67f9f2e205988203c0319748af95678fd729465e7583983821",
+    "zh:bfd56bacf3db94250c05decf3cdc61b895c09e28037ace670eb93a79f1866dc7",
+    "zh:c340ecfe40e034d1c6e5905354083af18f33fb6677b8deb9b43e0e1921d4ea64",
+    "zh:d1fab6c4ce7e554430af916a2b82a21aeffa2ee9cbd7daf604427321b10b97da",
+  ]
+}
