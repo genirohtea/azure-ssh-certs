@@ -67,6 +67,11 @@
         dest: "{{ ssh_key_file.path }}"
         line: "{{ ssh_key }}"
 
+    - name: Remove any existing certificate
+      ansible.builtin.file:
+        path: "~/.ssh/{{ user_ssh_key_filename }}-cert.pub"
+        state: absent
+
     - name: Sign the user ssh key
       ansible.builtin.shell:
         cmd: >-
