@@ -30,6 +30,7 @@ Available options:
 
 -h, --help      Print this help and exit
 -v, --verbose   Print script debug info
+-a, --azure     Use azure instead of bws
 -t, --tags      Specify Ansible tags to run specific tasks
 -H, --host      Specify the host from the Ansible inventory to run the playbook on
 -s, --site      The site the workstation will connect to
@@ -37,6 +38,7 @@ Available options:
 -e, --env       The environment in the site to connect to
 -d, --domain    The host domain to use for the signed certificate
 -E, --expiry      The expiry timeframe of the generated certificate
+-S, --use_ssh_pass Use password based ssh authentication
 -p, --principals  The principals to sign the certificate for (in addition to the host)
 EOF
   exit
@@ -51,6 +53,8 @@ die() {
 
 tags=''
 disable_key_check='false'
+azure='false'
+use_ssh_pass='false'
 parse_params() {
   while :; do
     case "${1-}" in
@@ -88,6 +92,8 @@ parse_params() {
       shift
       ;;
     -d | --disable_key_check) disable_key_check='true' ;; # example flag
+    -A | --azure) azure='true' ;;                         # example flag
+    -S | --use_ssh_pass) use_ssh_pass='true' ;;           # example flag
     -?*) die "Unknown option: $1" ;;
     *) break ;;
     esac
@@ -100,6 +106,7 @@ parse_params() {
   [[ -z "${host-}" ]] && die "Missing required parameter: host"
   [[ -z "${site-}" ]] && die "Missing required parameter: site"
   [[ -z "${env-}" ]] && die "Missing required parameter: env"
+  [[ -z "${use_ssh_pass-}" ]] && die "Missing required parameter: use_ssh_pass"
   if [[ -z "${expiry-}" ]]; then
     expiry="+395d"
   fi
@@ -124,6 +131,7 @@ parse_params "$@"
 msg "Read parameters:"
 msg "- arguments: ${args[*]-}"
 msg "- environment: ${env-}"
+msg "- azure: ${azure-}"
 msg "- host: ${host-}"
 msg "- site: ${site-}"
 msg "- ansible_user: ${ansible_user-}"
@@ -153,11 +161,15 @@ if [[ "${disable_key_check}" == "true" ]]; then
   echo "Disabled host key checking"
 fi
 
+if [[ "${use_ssh_pass}" == "true" ]]; then
+  ssh_pass="--ask-pass"
+fi
+
 # Turn on verbosity to see the ansible run command
 set -x
 
 # shellcheck disable=SC2086
-ansible-playbook setup_host_server.yml --ask-pass ${verbosity:-} -u "${ansible_user}" ${tags} --extra-vars '{"site": '"${site}"', "env": '"${env}"', "expiry": '"${expiry}"', "principals": '"${principals}"', "identity": '"${host}"' }' -i "${host}",
+ansible-playbook setup_host_server.yml ${ssh_pass:-} ${verbosity:-} -u "${ansible_user}" ${tags} --extra-vars '{"site": '"${site}"', "env": '"${env}"', "expiry": '"${expiry}"', "principals": '"${principals}"', "identity": '"${host}"', "use_azure": '"${azure}"' }' -i "${host}",
 
 # Turn off verbosity
 set -x

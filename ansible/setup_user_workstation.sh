@@ -30,6 +30,7 @@ Available options:
 
 -h, --help      Print this help and exit
 -v, --verbose   Print script debug info
+-a, --azure     Use azure instead of bws
 -t, --tags      Specify Ansible tags to run specific tasks
 -H, --host      Specify the host from the Ansible inventory to run the playbook on
 -s, --site      The site the workstation will connect to
@@ -37,6 +38,7 @@ Available options:
 -u, --user      The user that will be used to connect to the servers
 -d, --domain    The host domain regex that will be connected to
 -E, --expiry      The expiry timeframe of the generated certificate
+-S, --use_ssh_pass Use password based ssh authentication
 -p, --principals  The principals to sign the certificate for (in addition to the user)
 -r, --add_root    Adds root to the principals
 EOF
@@ -52,6 +54,8 @@ die() {
 
 tags=''
 add_root='false'
+azure='false'
+use_ssh_pass='false'
 parse_params() {
   while :; do
     case "${1-}" in
@@ -92,7 +96,9 @@ parse_params() {
       extra_principals="${2-}"
       shift
       ;;
-    -r | --add_root) add_root='true' ;; # example flag
+    -r | --add_root) add_root='true' ;;         # example flag
+    -A | --azure) azure='true' ;;               # example flag
+    -S | --use_ssh_pass) use_ssh_pass='true' ;; # example flag
     -?*) die "Unknown option: $1" ;;
     *) break ;;
     esac
@@ -107,6 +113,7 @@ parse_params() {
   [[ -z "${env-}" ]] && die "Missing required parameter: env"
   [[ -z "${user-}" ]] && die "Missing required parameter: user"
   [[ -z "${domain-}" ]] && die "Missing required parameter: domain"
+  [[ -z "${use_ssh_pass-}" ]] && die "Missing required parameter: use_ssh_pass"
   if [[ -z "${expiry-}" ]]; then
     expiry="+395d"
   fi
@@ -161,13 +168,17 @@ else
   echo "host is not localhost, no action taken."
 fi
 
+if [[ "${use_ssh_pass}" == "true" ]]; then
+  ssh_pass="--ask-pass"
+fi
+
 pushd "${ansible_dir}"
 
 # Turn on verbosity to see the ansible run command
 set -x
 
 # shellcheck disable=SC2086
-ansible-playbook setup_user_workstation.yml --ask-pass ${verbosity:-} ${tags} --extra-vars '{"site": "'"${site}"'", "env": "'"${env}"'", "user": "'"${user}"'", "expiry": "'"${expiry}"'", "principals": "'"${principals}"'", "domain": "'"${domain}"'" }' -i "${host}", ${localhost_args}
+ansible-playbook setup_user_workstation.yml ${ssh_pass:-} ${verbosity:-} ${tags} --extra-vars '{"site": "'"${site}"'", "env": "'"${env}"'", "user": "'"${user}"'", "expiry": "'"${expiry}"'", "principals": "'"${principals}"'", "domain": "'"${domain}"'", "use_azure": '"${azure}"' }' -i "${host}", ${localhost_args}
 
 # Turn off verbosity
 set -x
