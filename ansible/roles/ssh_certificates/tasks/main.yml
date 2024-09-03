@@ -1,0 +1,39 @@
+---
+# tasks file for ssh_certificates
+- name: "Setup SSH certificates"
+  tags:
+    - ssh_certificates
+  block:
+    # Order Matters
+    - name: "Sign host key"
+      ansible.builtin.include_tasks:
+        file: "sign_host_key.yml"
+      when:
+        - sign_host_key is defined
+        - sign_host_key
+
+    - name: "Accept user certificate"
+      ansible.builtin.include_tasks:
+        file: "accept_user_ca.yml"
+      when:
+        - accept_user_ca is defined
+        - accept_user_ca
+
+    - name: "Sign user key"
+      ansible.builtin.include_tasks:
+        file: "sign_user_key.yml"
+      when:
+        - sign_user_key is defined
+        - sign_user_key
+
+    - name: "Accept host certificate"
+      ansible.builtin.include_tasks:
+        file: "accept_host_ca.yml"
+      when:
+        - accept_host_ca is defined
+        - accept_host_ca
+
+  rescue:
+    - name: "SSH certificate setup failed"
+      ansible.builtin.set_fact:
+        task_failed: true

@@ -1,6 +1,0 @@
----
-# Standardized from the terraform module
-service_name: "sshcerts"
-ca_key_type: "pubopenssh"
-ca_type: "userca"
-bws_secret_id: "37dcd427-3069-43ec-b083-b1cf016eb36b"

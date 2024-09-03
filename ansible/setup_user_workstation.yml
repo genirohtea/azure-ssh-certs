@@ -11,5 +11,7 @@
 - name: "Setup the User Workstation to use SSH certificates"
   hosts: all
   roles:
-    - role: sign_user_key
-    - role: accept_host_ca
+    - role: ssh_certificates
+      vars:
+        sign_user_key: true
+        accept_host_ca: true

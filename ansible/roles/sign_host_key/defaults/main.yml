@@ -1,9 +1,0 @@
----
-# Standardized from the terraform module
-service_name: "sshcerts"
-ca_key_type: "priopenssh"
-ca_type: "hostca"
-bws_secret_id: "c0474cde-00a4-42df-8b26-b1cf016eade0"
-
-# Default for all known linux installs of ssh
-host_key_path: "/etc/ssh/ssh_host_rsa_key"
