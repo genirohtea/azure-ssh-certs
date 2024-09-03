@@ -11,5 +11,7 @@
 - name: "Setup the Host Server to use SSH certificates"
   hosts: all
   roles:
-    - role: sign_host_key
-    - role: accept_user_ca
+    - role: ssh_certificates
+      vars:
+        sign_host_key: true
+        accept_user_ca: true

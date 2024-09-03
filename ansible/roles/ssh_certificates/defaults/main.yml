@@ -1,0 +1,3 @@
+---
+# defaults file for ssh_certificates
+service_name: "sshcerts"
